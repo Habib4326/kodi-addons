@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.Live" name="Live Ftp Media" version="1.0.0" provider-name="xbmc by Habib">
+<addon id="plugin.video.LivePoster" name="Live Ftp MediaPoster" version="1.0.0" provider-name="xbmc by Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
