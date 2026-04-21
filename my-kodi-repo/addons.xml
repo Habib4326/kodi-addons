@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+<addon id="plugin.video.codexfinder" name="Codex Movie Finder" version="1.0.0" provider-name="Habib">
+<requires>
+<import addon="xbmc.python" version="3.0.0"/>
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+<provides>video</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+<summary>Watch movies from local FTP servers</summary>
+<description>Browse and play movies directly from your specified local IP servers.</description>
+<platform>all</platform>
+<assets>
+<icon>icon.png</icon>
+<fanart>fanart.jpg</fanart>
+</assets>
+</extension>
+</addon>
+<addon id="plugin.video.Live"
+name="Live Ftp Media"
+version="1.0.0"
+provider-name="xbmc by Habib">
+
+<requires>
+<import addon="xbmc.python" version="3.0.0"/>
+</requires>
+
+<extension point="xbmc.python.pluginsource" library="default.py">
+<provides>video</provides>
+</extension>
+
+<extension point="xbmc.addon.metadata">
+<summary lang="en">Browse and stream movies from ICC FTP</summary>
+<description lang="en">Streams videos directly from ICC FTP server folder structure.</description>
+<platform>all</platform>
+
+<assets>
+<icon>icon.png</icon>
+<fanart>fanart.jpg</fanart>
+</assets>
+</extension>
+
+</addon>
+</addons>
