@@ -25,6 +25,40 @@ provider-name="xbmc by Habib">
 </extension>
 
 </addon>
+<addon id="repository.habib.addons"
+name="Habib Kodi Add-ons Repository"
+version="1.0.0"
+provider-name="Habib">
+
+<extension point="xbmc.addon.repository"
+name="Habib Kodi Add-ons Repository">
+<dir>
+<info compressed="false">
+https://habib4326.github.io/kodi-addons/addons.xml
+</info>
+<checksum>
+https://habib4326.github.io/kodi-addons/addons.xml.md5
+</checksum>
+<datadir zip="true">
+https://habib4326.github.io/kodi-addons/zips/
+</datadir>
+</dir>
+</extension>
+
+<extension point="xbmc.addon.metadata">
+<summary>Habib's Personal Kodi Repository</summary>
+<description>
+Install and update Kodi add-ons by Habib.
+Contains Live Poster and ICC GitHub XML plugins.
+</description>
+<platform>all</platform>
+<assets>
+<icon>icon.png</icon>
+<fanart>fanart.jpg</fanart>
+</assets>
+</extension>
+
+</addon>
 <addon id="plugin.video.codexfinder" name="Codex Movie Finder" version="1.0.0" provider-name="Habib">
 <requires>
 <import addon="xbmc.python" version="3.0.0"/>
