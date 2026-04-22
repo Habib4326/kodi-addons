@@ -1,243 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habib Kodi Add-ons Repository</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            border-radius: 20px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
-            color: #00c6ff;
-        }
-        .subtitle {
-            color: #aaa;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        .status {
-            background: rgba(0,200,83,0.15);
-            border: 1px solid rgba(0,200,83,0.4);
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 25px;
-            color: #69f0ae;
-            font-size: 14px;
-        }
-        .status::before {
-            content: "🟢 ";
-        }
-        .section-title {
-            text-align: left;
-            font-size: 16px;
-            color: #00c6ff;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 8px;
-        }
-        .addon-card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 12px;
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-        .addon-card:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: #00c6ff;
-            transform: translateY(-2px);
-        }
-        .addon-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-        .addon-id {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-            font-family: monospace;
-        }
-        .addon-desc {
-            font-size: 13px;
-            color: #bbb;
-            margin-bottom: 12px;
-        }
-        .addon-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .version {
-            background: rgba(0,198,255,0.15);
-            color: #00c6ff;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-        .download-btn {
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0,114,255,0.4);
-        }
-        .repo-info {
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .repo-info h3 {
-            font-size: 14px;
-            color: #00c6ff;
-            margin-bottom: 10px;
-        }
-        .repo-url {
-            background: rgba(0,0,0,0.3);
-            border-radius: 8px;
-            padding: 10px;
-            font-family: monospace;
-            font-size: 11px;
-            color: #69f0ae;
-            word-break: break-all;
-            margin-bottom: 8px;
-        }
-        .repo-files {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        .repo-file-link {
-            background: rgba(255,255,255,0.1);
-            color: #aaa;
-            text-decoration: none;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-        .repo-file-link:hover {
-            background: rgba(0,198,255,0.2);
-            color: #00c6ff;
-        }
-        .footer {
-            margin-top: 25px;
-            color: #555;
-            font-size: 12px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="logo">📺</div>
-        <h1>Habib Kodi Add-ons</h1>
-        <p class="subtitle">Your personal Kodi repository by Habib</p>
-
-        <div class="status">Repository is Active & Online</div>
-
-        <div class="section-title">📦 Available Add-ons</div>
-
-        <!-- Addon 1 -->
-        <div class="addon-card">
-            <div class="addon-name">🎬 Codex Movie Finder</div>
-            <div class="addon-id">plugin.video.codexfinder</div>
-            <div class="addon-desc">
-                Browse and play movies directly from your specified local IP servers.
-            </div>
-            <div class="addon-meta">
-                <span class="version">v1.0.0</span>
-                <a href="zips/plugin.video.codexfinder/plugin.video.codexfinder-1.0.0.zip"
-                   class="download-btn">⬇️ Download ZIP</a>
-            </div>
-        </div>
-
-        <!-- Addon 2 -->
-        <div class="addon-card">
-            <div class="addon-name">📡 Live FTP Media</div>
-            <div class="addon-id">plugin.video.Live</div>
-            <div class="addon-desc">
-                Streams videos directly from ICC FTP server folder structure.
-            </div>
-            <div class="addon-meta">
-                <span class="version">v1.0.0</span>
-                <a href="zips/plugin.video.Live/plugin.video.Live-1.0.0.zip"
-                   class="download-btn">⬇️ Download ZIP</a>
-            </div>
-        </div>
-
-        <!-- Repo Info -->
-        <div class="repo-info">
-            <h3>🔧 How to Install in Kodi</h3>
-            <p style="font-size:13px;color:#bbb;margin-bottom:10px;">
-                Add this URL as a file source in Kodi:
-            </p>
-            <div class="repo-url">
-                https://habib4326.github.io/kodi-addons/
-            </div>
-            <p style="font-size:12px;color:#888;margin-top:8px;">
-                Steps: Kodi → Settings → File Manager → Add Source → paste URL above
-                → Go to Add-ons → Install from ZIP file → select from the source
-            </p>
-
-            <div class="repo-files">
-                <a href="addons.xml" class="repo-file-link">📄 addons.xml</a>
-                <a href="addons.xml.md5" class="repo-file-link">🔑 addons.xml.md5</a>
-            </div>
-        </div>
-
-        <div class="footer">
-            &copy; 2025 Habib | Kodi Add-ons Repository
-        </div>
+<!-- Addon 1 -->
+<div class="addon-card">
+    <div class="addon-name">🎬 Live Poster</div>
+    <div class="addon-id">plugin.video.Liveposter</div>
+    <div class="addon-desc">
+        Browse and play movies from local servers.
     </div>
-</body>
-</html>
+    <div class="addon-meta">
+        <span class="version">v1.0.0</span>
+        <a href="zips/plugin.video.Liveposter/plugin.video.Liveposter-1.0.0.zip"
+           class="download-btn">⬇️ Download ZIP</a>
+    </div>
+</div>
+
+<!-- Addon 2 -->
+<div class="addon-card">
+    <div class="addon-name">📡 ICC GitHub XML</div>
+    <div class="addon-id">plugin.video.iccgithubxml</div>
+    <div class="addon-desc">
+        Streams videos from ICC FTP server.
+    </div>
+    <div class="addon-meta">
+        <span class="version">v1.0.0</span>
+        <a href="zips/plugin.video.iccgithubxml/plugin.video.iccgithubxml-1.0.0.zip"
+           class="download-btn">⬇️ Download ZIP</a>
+    </div>
+</div>
