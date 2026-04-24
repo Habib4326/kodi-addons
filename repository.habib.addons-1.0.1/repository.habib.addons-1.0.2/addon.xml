@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.habib.addons" name="Kodi Add-ons Repository" version="1.0.2" provider-name="Xbmc by Habib">
+<extension point="xbmc.addon.repository" name="Kodi Add-ons Repository">
+<dir>
+<info compressed="false">https://habib4326.github.io/kodi-addons/addons.xml</info>
+<checksum>https://habib4326.github.io/kodi-addons/addons.xml.md5</checksum>
+<datadir zip="true">https://habib4326.github.io/kodi-addons/zips/</datadir>
+</dir>
+</extension>
+<extension point="xbmc.addon.metadata">
+<summary>Habib Kodi Add-ons Repository</summary>
+<description>Install and update add-ons by Habib.</description>
+<platform>all</platform>
+<assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+</extension>
+</addon>
