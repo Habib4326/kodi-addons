@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<window>
-	<onload>ReplaceWindow($INFO[System.StartupWindow])</onload>
-	<controls />
-<onload condition="String.IsEmpty(Skin.String(PowerButtonMode))">
-    Skin.SetString(PowerButtonMode, Show Shutdown Menu)
-</onload>
-</window>
