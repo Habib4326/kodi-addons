@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Server Settings">
+        <setting id="enable_circle" type="bool" label="Enable Circle" default="true"/>
+        <setting id="enable_dhaka" type="bool" label="Enable DhakaFlix" default="true"/>
+        <setting id="enable_info" type="bool" label="Enable InfoMedia" default="true"/>
+        <setting id="enable_movie" type="bool" label="Enable Movie-Data" default="true"/>
+        <setting id="enable_korean" type="bool" label="Enable Korean" default="true"/>
+        <setting id="enable_icc" type="bool" label="Enable ICC-FTP" default="true"/>
+    </category>
+</settings>
