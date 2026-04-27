@@ -22,4 +22,521 @@
     </extension>
 </addon>
 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.adulthideout" name="AdultHideout" version="1.0.8" provider-name="Vashiel">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.25.1"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <settingfile>resources/settings.xml</settingfile>
+        <news>
+v. 1.0.8 "Jubilee Year Update" - 2026-03-31
+- **Improved &amp; Fixed**: AnySex, Ashemaletube, AVJoy, Beeg, Fuqer, Hanime, HQPorner, LetMeJerk, LuxureTV, Nudez, OK.xxx, PornHits, PornZog, Rule34Video, SaintPorn, Shameless, Shemalez, SunPorno, SxyPrn, Thumbzilla, Tube8, UFlash, Upornia, Veporn, VikiPorn, VJav, xCafe, XMoviesForYou, YouJizz, YouPorn.
+- **Playback &amp; Performance**: Improved startup time or stream selection for Nudez, SunPorno, xCafe and YouJizz; added a platform-specific Nudez playback path for Windows and Android.
+- **Removed**: RealCuckoldSex (domain for sale), TubeDupe (site currently only serves fixed 6-minute clips).
+- **Validation**: Expanded KVAT full-site regression coverage and completed a broad post-1.0.7 repair pass across the addon.
+- **10th Anniversary Year**: 2026 continues as AdultHideout's anniversary year, with follow-up stability updates after the 1.0.7 release.
+        </news>
+        <summary>[COLOR red]XXX[/COLOR] Porn videos</summary>
+        <description>
+Internet [COLOR red]XXX Porn Video[COLOR white] Streams.
+
+[COLOR red][B]WARNING:[/B][COLOR red]Only for adults[/COLOR]    
+
+[COLOR white]Github:
+https://github.com/Vashiel/repository.adulthideout
+[/COLOR]    
+        </description>
+        <disclaimer></disclaimer>    
+        <platform>all</platform>
+        <license>http://www.gnu.org/licenses/</license>
+        <forum></forum>
+        <website></website>    
+        <email></email>
+        <mainsource>https://github.com/Vashiel/repository.adulthideout</mainsource>    
+        <source></source>         
+        <assets>
+            <icon>resources/logos/icon.png</icon>
+            <fanart>resources/logos/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.blueballs"                                                                                                                                    
+	   name="[COLOR blue]Blue Balls[/COLOR]"                                                 
+	   version="1.9"                                                                                                                                        
+	   provider-name="[COLOR orange]Twisted Nutz[/COLOR]">
+  <requires>
+	
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension library="resources/modules/" point="xbmc.python.module" />
+  <extension library="resources/sources/" point="xbmc.python.module" />
+  <extension library="resources/" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+	<reuselanguageinvoker>true</reuselanguageinvoker>
+    <summary lang="en">Kodi 18+ Addon</summary>
+    <description lang="en">[COLOR orange]A Bit Of Porn For Your Enjoyment[/COLOR]</description>
+	
+    <platform>all</platform>
+	<assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+  
+</addon>
+
+<addon id="plugin.video.club.pornky.free"
+version="0.9.14"
+name="pornky.club (free)"
+provider-name="fr33p0rt">
+<requires>
+  <import addon="script.module.requests" />
+  <import addon="script.module.beautifulsoup4" />
+  <import addon="script.module.six"/>
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+  <platform>all</platform>
+  <summary lang="en">pornky.club</summary>
+  <description lang="en_GB">pornky.club video plugin for Kodi.</description>
+  <disclaimer lang="en_GB">License GPLv3. Software is provided 'as is' without warranty of any kind, either express or implied, including, but not limited to, the implied warranties of fitness for a purpose, or the warranty of non-infringement.</disclaimer>
+  <description lang="cs_CZ">pornky.club video plugin pro Kodi.</description>
+  <disclaimer lang="cs_CZ">Licence GPLv3. Software je poskytován „tak, jak je“, bez jakékoli záruky, ať výslovné nebo předpokládané, včetně, ale nikoli výhradně, předpokládaných záruk způsobilosti pro určitý účel nebo záruky neporušení práv.</disclaimer>
+  <assets>
+    <icon>icon.png</icon>
+    <fanart>fanart.jpg</fanart>
+  </assets>
+  <email>fr33p0rt@protonmail.com</email>
+  <news>Fix to follow website change again</news>
+</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.codexfinder" name="Codex Movie Finder" version="1.0.0" provider-name="Habib">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="main.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Watch movies from local FTP servers</summary>
+        <description>Browse and play movies directly from your specified local IP servers.</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="plugin.video.cumination" name="Cumination" provider-name="Cumination" version="1.1.179">
+    <requires>
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.resolveurl" version="5.0.00" />
+        <import addon="script.module.resolveurl.xxx" version="2.0.1" />
+        <import addon="script.common.plugin.cache" />
+        <import addon="script.module.websocket" version="0.50.0" />
+        <import addon="script.module.inputstreamhelper" />
+        <import addon="script.module.requests" />
+    </requires>
+    <extension library="default.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>GPL 2.0</license>
+        <summary lang="en_GB">Cumination, the culmination of adult sites on Kodi</summary>
+        <description lang="en_GB">Cumination, the culmination of adult sites on Kodi</description>
+        <disclaimer lang="en_GB">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the sites offered. Click on About from the contextmenu on each site to check for contact details.</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.elementum" name="Elementum" version="0.1.113" provider-name="elgatito">
+    <requires>
+        <import addon="xbmc.addon" version="16.0.0" />
+        <import addon="repository.elementumorg" optional="true" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.requests" version="2.9.1" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="navigation.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="startup" />
+    <extension point="xbmc.python.module" library="resources/site-packages" />
+    <extension point="xbmc.subtitle.module" library="navigation.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="ru">Elementum: Стриминг видео</summary>
+        <summary lang="en">Elementum: Media streaming</summary>
+        <summary lang="hr">Elementum: Medijsko strujanje</summary>
+        <summary lang="es">Elementum: Transmisión de medios</summary>
+        <summary lang="sv">Elementum: medieströmning</summary>
+        <description lang="ru">Elementum это дополнение для поиска и воспроизведения торрентов. Дополнение не ходит на запрещенные сайты самостоятельно. Хотя, для поиска используются дополнения (называемые провайдерами), которые устанавливаются отдельно.[CR]Этот проект является ответвлением хорошо извесных, но не поддерживаемых Pulsar/Quasar от steeve и scakemyer.</description>
+        <description lang="en">Elementum is a torrent finding and streaming engine. It doesn't go on torrent websites for legal reasons. However, it calls specially crafted add-ons (called providers) that are installed separately.[CR]This project is a fork of the well known, but no longer maintained Pulsar/Quasar projects from steeve and scakemyer.</description>
+        <description lang="hr">Elementum je pogon pretraživanja i strujanja. Ne posjećuje torrent web stranice iz pravnih razloga. Ipak, koristi posebno napravljene dodatke (nazvane pružatelji usluge) koji su instalirani odvojeno.[CR]Ovaj projekt je ogranak dobro poznatih, ali više ne održavanih Pulsar/Quasar projekata od autora steevea i scakemyera.</description>
+        <description lang="es">Elementum es un motor de búsqueda y transmisión torrent. No navega por sitios web torrent por razones legales. Sin embargo, llama a complementos especialmente diseñados para ello (denominados providers o proveedores) que se instalan por separado.[CR]Este proyecto es un fork de los bien conocidos, pero ya sin soporte proyectos Pulsar/Quasar de steeve y scakemyer.[CR]</description>
+        <description lang="sv">Elementum är en torrentsöknings- och strömningsmotor. Det går inte till torrentwebbplatser av juridiska skäl. Den anropar dock speciellt utformade tillägg (kallade leverantörer) som installeras separat.[CR]Detta projekt är en förgrening av de välkända, men inte längre underhållna Pulsar/Quasar-projekten av steeve och scakemyer. </description>
+        <disclaimer lang="ru">Автор дополнения не несёт ответственности за скачивание или поиск информации и содержимого в этом дополнении. Автор никак не связан с Kodi, командой Kodi, или XBMC Foundation.</disclaimer>
+        <disclaimer lang="en">The author does not own or host any content found within this Addon. The author is not connected to or in any other way affiliated with Kodi, Team Kodi, or the XBMC Foundation.</disclaimer>
+        <disclaimer lang="hr">Autor ovog dodatka ne posjeduje i ne distribuira bilo kakav sadržaj koji je pronađen. Autor nije povezan sa ili na bilo koji drugi način bilo sa Kodijem, Team Kodijem ili XBMC fundacijom.</disclaimer>
+        <disclaimer lang="es">El autor no posee ni aloja ningún contenido que se encuentre a través de este complemento. El autor no está unido ni relacionado de ninguna manera con Kodi, Team Kodi, o XBMC Foundation.</disclaimer>
+        <disclaimer lang="sv">Skaparen äger inte eller är värd av något innehåll som finns i detta tillägg. Författaren är inte ansluten till eller på något annat sätt en del av Kodi, Team Kodi eller XBMC Foundation.</disclaimer>
+        <language>en el es de fi fr he hr it nl pt ro sk sv</language>
+        <platform>all</platform>
+        <website>http://elementum.surge.sh/</website>
+        <source>https://github.com/elgatito/plugin.video.elementum</source>
+        <forum></forum>
+        <license>Non commercial. See https://github.com/elgatito/plugin.video.elementum/blob/master/LICENSE</license>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/screenshots/home.png</screenshot>
+            <screenshot>resources/screenshots/movies.png</screenshot>
+            <screenshot>resources/screenshots/webui.png</screenshot>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="plugin.video.jetproxy" version="1.0.6" name="JetProxy" provider-name="t4ils">
+<requires>
+  <import addon="xbmc.python" version="3.0.0"/>
+  <import addon="script.module.routing"/>
+  <import addon="script.module.requests"/>
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.service" library="service.py" />
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">JetProxy</summary>
+  <description lang="en_GB">JetProxy</description>
+  <assets>
+    <icon>icon.png</icon>
+    <fanart>fanart.jpg</fanart>  
+  </assets>
+</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.thecrew" version="2.0.6" name="[COLOR orchid]THE CREW[/COLOR]" provider-name="The Crew">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.thecrew" />
+        <import addon="script.thecrew.artwork" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.simplejson" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.beautifulsoup4" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="plugin.video.youtube" optional="true" />
+        <import addon="script.module.inputstreamhelper" version="0.3.3"/>
+    </requires>
+    <extension library="thecrew.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="service.py" point="xbmc.service" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">The Crew is a team of individuals that does what it can to provide others, you the best in entertainment.</summary>
+        <description lang="en">Many come, Many go. The true and dedicated are here.</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/art/ss/1.png</screenshot>
+            <screenshot>resources/art/ss/2.png</screenshot>
+            <screenshot>resources/art/ss/3.png</screenshot>
+        </assets>
+    </extension>
+</addon>
+
+<addon
+  id="plugin.video.videodevil"
+  version="1.8.28"
+  name="VideoDevil"
+  provider-name="xbmc-adult">
+  <requires>
+    <!-- Commenting xbmc.python allows install on all versions of Kodi -->
+    <!-- <import addon="xbmc.python" version="2.14.0"/> -->
+    <import addon="script.module.six"/>
+    <import addon="script.module.kodi-six"/>
+  </requires>
+  <extension 
+    point="xbmc.python.pluginsource"
+    library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de_DE">Spielen Sie Videos von verschiedenen Streaming-Sites für Erwachsene ab</summary>
+    <summary lang="en_GB">Play videos from different adult streaming sites</summary>
+    <summary lang="fi_FI">Toista videoita aikuisten suoratoistosivustoilta</summary>
+    <summary lang="fr_FR">Lire des vidéos de différents sites de streaming pour adultes</summary>
+    <summary lang="pt_PT">Reproduza vídeos de diferentes sites de streaming adulto</summary>
+    <summary lang="sv_SE">Spela videor från olika streaming-webbplatser för vuxna</summary>
+    <description lang="de_DE">Dieses Addon spielt Videos von YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies und einigen anderen Streaming-Sites für Erwachsene ab. Es enthält explizites Material für Erwachsene. Sie können dieses Addon nur anzeigen, wenn Sie mindestens 18 Jahre alt sind oder mindestens das Alter der Mehrheit in dem Land, in dem Sie wohnen oder von dem aus Sie auf diese Inhalte zugreifen. Wenn Sie diese Anforderungen nicht erfüllen, haben Sie keine Berechtigung, dieses Addon zu verwenden.</description>
+    <description lang="en_GB">This addon plays videos from YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies and some other adult streaming sites. It contains explicit adult material. You may only view this addon if you are at least 18 years of age, or at least the age of majority in the jurisdiction where you reside or from which you access this content. If you do not meet these requirements, then you do not have permission to use this addon.</description>
+    <description lang="fi_FI">Tämä lisäosa toistaa videoita YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies ja joistakin muista aikuisten suoratoistosivustoista. Se sisältää nimenomaista aikuisille tarkoitettua materiaalia. Voit tarkastella tätä lisäosaa vain, jos olet vähintään 18-vuotias tai vähintään täysi-ikäinen sen lainkäyttöalueella, jossa asut tai josta käytät tätä sisältöä. Jos et täytä näitä vaatimuksia, sinulla ei ole lupaa käyttää tätä lisäosaa.</description>
+    <description lang="fr_FR">Cet addon lit des vidéos de YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies et d'autres sites de streaming pour adultes. Il contient du matériel explicite pour adultes. Vous ne pouvez voir cet addon que si vous avez au moins 18 ans, ou au moins l'âge de la majorité dans la juridiction où vous résidez ou à partir de laquelle vous accédez à ce contenu. Si vous ne remplissez pas ces conditions, vous n'êtes pas autorisé à utiliser ce module complémentaire.</description>
+    <description lang="pt_PT">Este complemento reproduz vídeos do YouPorn, Tube8, Boysfood, MoviesAnd, PornoTube, xHamster, KeezMovies e alguns outros sites de streaming adulto. Ele contém material adulto explícito. Você só pode visualizar este complemento se tiver pelo menos 18 anos de idade ou maioridade na jurisdição em que reside ou da qual acessa este conteúdo. Se você não atender a esses requisitos, não terá permissão para usar este complemento.</description>
+    <description lang="sv_SE">Denna addon spelar videor från YouPorn, Tube8, Boysfood, Movies And, PornoTube, xHamster, KeezMovies och några andra streamingwebbplatser för vuxna. Det innehåller tydligt vuxenmaterial. Du får bara se detta tillägg om du är minst 18 år, eller åtminstone majoritetsåldern i den jurisdiktion där du bor eller från vilken du får åtkomst till detta innehåll. Om du inte uppfyller dessa krav har du inte behörighet att använda detta tillägg.</description>
+    <disclaimer lang="de_DE">Der Autor hostet oder verbreitet keinen der von diesem Addon angezeigten Inhalte. Der Autor hat keine Verbindung zum Inhalteanbieter.</disclaimer>
+    <disclaimer lang="en_GB">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+    <disclaimer lang="fi_FI">Kirjoittaja ei isännöi tai jaa mitään tämän lisäosan näytettyä sisältöä. Kirjoittajalla ei ole mitään siteitä sisällöntuottajaan.</disclaimer>
+    <disclaimer lang="fr_FR">L'auteur n'héberge ni ne distribue aucun des contenus affichés par cet addon. L'auteur n'a aucune affiliation avec le fournisseur de contenu.</disclaimer>
+    <disclaimer lang="pt_PT">O autor não hospeda nem distribui nenhum conteúdo exibido por este complemento. O autor não tem nenhuma afiliação com o provedor de conteúdo.</disclaimer>
+    <disclaimer lang="sv_SE">Författaren är inte värd eller distribuerar något av innehållet som visas av detta tillägg. Författaren har ingen anknytning till innehållsleverantören.</disclaimer>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.adulthideout" name="AdultHideout REPO" version="1.0.3" provider-name="Vashiel">
+  <extension point="xbmc.addon.repository" name="AdultHideout Addon Repository">
+    <dir maxversion="20.9.0">
+      <info compressed="false">https://github.com/Vashiel/repository.adulthideout/raw/master/addons.xml</info>
+      <checksum>https://github.com/Vashiel/repository.adulthideout/raw/master/addons.xml.md5</checksum>
+      <datadir zip="true">https://github.com/Vashiel/repository.adulthideout/raw/master/zips</datadir>
+      <hashes>false</hashes>
+    </dir>
+    <dir minversion="21.0.0">
+      <info compressed="false">https://github.com/Vashiel/repository.adulthideout/raw/master/addons.xml</info>
+      <checksum>https://github.com/Vashiel/repository.adulthideout/raw/master/addons.xml.md5</checksum>
+      <datadir zip="true">https://github.com/Vashiel/repository.adulthideout/raw/master/zips</datadir>
+      <hashes>false</hashes>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>AdultHideout Addon Repository</summary>
+    <description>First Try for a Adult Kodi Addon</description>
+    <platform>all</platform>
+    <assets>
+      <icon>resources/icon.png</icon>
+      <fanart>resources/fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon>
+
+<addon id="repository.elementumorg" name="ElementumOrg repository" provider-name="elementumorg" version="0.0.5">
+    <requires>
+        <!--<import addon="xbmc.python" version="3.0.0"/>-->
+    </requires>
+    <extension point="xbmc.addon.repository">
+        <dir>
+            <info>http://127.0.0.1:65223/addons.xml</info>
+            <checksum>http://127.0.0.1:65223/addons.xml.md5</checksum>
+            <datadir>http://127.0.0.1:65223/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.python.script" library="default.py"/>
+    <extension point="xbmc.service" library="service.py"/>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>See https://github.com/ElementumOrg/repository.elementumorg/blob/master/LICENSE</license>
+        <source>https://github.com/ElementumOrg/repository.elementumorg</source>
+        <summary lang="en">GitHub virtual Add-on repository</summary>
+        <description lang="en">Customizable repository which acts as a proxy for defined GitHub users' add-ons updates.</description>
+        <news>
+- Allow running in standalone mode
+- Migrate to GitHub API
+- Add support for "tag_pattern" field
+- Add support for private repositories by supplying a "token"
+- Try to automatically determine zip ref from version
+- Multiple minor improvements
+        </news>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.resolveurl" name="ResolveURL Repository" provider-name="gujal" version="1.0.0">
+  <extension point="xbmc.addon.repository" name="ResolveURL Repository">
+    <dir>
+      <info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
+      <checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
+      <datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <description lang="en_GB">ResolveURL and Link Tester</description>
+    <license></license>
+    <language></language>
+    <website></website>
+    <news></news>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets> 
+  </extension>
+</addon>
+
+<addon id="repository.thecrew" name="[COLOR orchid]THE CREW REPO[/COLOR]" provider-name="The Crew" version="0.3.8">
+	<extension point="xbmc.addon.repository" name="The Crew" >
+			<dir minversion="18.9.9">
+			<info compressed="false">https://raw.githubusercontent.com/thecrewwh/zips/master/matrix/_zip/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/thecrewwh/zips/master/matrix/_zip/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/thecrewwh/zips/master/matrix/_zip</datadir>
+			</dir>
+			<dir>
+			<info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
+			</dir>
+			<dir>
+			<info compressed="false">https://raw.githubusercontent.com/unhingedthemes/zips/main/_zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/unhingedthemes/zips/main/_zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/unhingedthemes/zips/main/_zips/</datadir>
+			</dir>
+			<dir>
+			<info compressed="false">https://github.com/OldManJax/repository.animaniac/raw/master/addons.xml</info>
+			<checksum>https://github.com/OldManJax/repository.animaniac/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/OldManJax/repository.animaniac/raw/master/</datadir>
+			</dir>
+			<dir>
+			<info compressed="false">https://raw.githubusercontent.com/dobbelina/repository.dobbelina/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/dobbelina/repository.dobbelina/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/dobbelina/repository.dobbelina/master/</datadir>
+			</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">The Crew is a team of individuals that does what it can to provide others, you the best in entertainment.</summary>
+		<description lang="en">Many come, Many go. The true and dedicated are here. We here</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/art/ss/1.png</screenshot>
+			<screenshot>resources/art/ss/2.png</screenshot>
+			<screenshot>resources/art/ss/3.png</screenshot>
+		</assets>
+	</extension>
+</addon>
+
+<addon id="resource.uisounds.crew" version="1.0.1" name="[COLOR orchid]THE CREW SOUNDS[/COLOR]" provider-name="The Crew">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">The Crew Sounds</summary>
+    <description lang="en">The Crew Sounds</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" ?><!-- note version attribute gets changed on the fly using ./scripts/update-version.py --><addon id="script.elementum.jackett" name="Elementum [COLOR FF0291F7]Jackett[/COLOR]" version="3.1.0" provider-name="fugkco">  
+      <requires>    
+            <import addon="xbmc.python" version="3.0.0"/>    
+            <import addon="plugin.video.elementum"/>    
+            <import addon="script.module.urllib3"/>    
+            <import addon="script.module.kodi-six"/>    
+      </requires>  
+      <extension point="xbmc.python.script" library="src/main.py">    
+            <provides>executable</provides>    
+      </extension>  
+      <extension point="xbmc.addon.metadata">    
+            <summary lang="en">Elementum Jackett provider</summary>    
+            <description lang="en">Elementum Jackett is a provider that connects Elementum to Jacket. You need to run your own Jackett server.</description>    
+            <license>WTFPL, Version 2</license>    
+            <website>https://github.com/vasilky3/script.elementum.jackett</website>    
+            <source>https://github.com/vasilky3/script.elementum.jackett</source>    
+            <assets>      
+                  <icon>resources/images/icon.png</icon>      
+            </assets>    
+        <news>[B]3.1.0[/B] (2025-04-27)
+
+
+</news>  </extension>  
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.fentastic.helper" name="FENtastic Plus Helper" version="100.6.25" provider-name="Tikipeter, Ivar Brandt, Zaxxon709">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.19.1"/>
+    </requires>
+    <extension point="xbmc.python.library" library="resources/lib/default.py"/>
+    <extension point="xbmc.service" library="resources/lib/service.py" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <news />
+        <platform>all</platform>
+        <license>GPL-2.0-only</license>
+        <forum />
+        <source />
+        <assets>
+            <icon>resources/media/icon.png</icon>
+            <fanart>resources/media/fanart.jpg</fanart>
+        </assets>
+        <description lang="en_GB">Helper for the FENtastic Plus Skin. Based on Fentastic Helper v0.6.20a.</description>
+        <description lang="en_NZ">Helper for the FENtastic Plus Skin. Based on Fentastic Helper v0.6.20a.</description>
+        <description lang="en_US">Helper for the FENtastic Plus Skin. Based on Fentastic Helper v0.6.20a.</description>
+    </extension>
+</addon>
+
+<addon id="skin.fentastic" version="100.0.30" name="FENtastic Plus"
+	provider-name="Ivar Brandt, Zaxxon709">
+	<requires>
+		<import addon="xbmc.gui" version="5.17.0" />
+		<import addon="script.fentastic.helper" version="100.6.25" />
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="false">
+		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
+		<res width="1920" height="1280" aspect="3:2" default="false" folder="xml" />
+		<res width="1920" height="1200" aspect="16:10" default="false" folder="xml" />
+		<res width="2040" height="1080" aspect="17:9" default="false" folder="xml" />
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+		<res width="2560" height="1080" aspect="21:9" default="false" folder="xml" />
+		<res width="2338" height="1080" aspect="19.5:9" default="false" folder="xml" />
+		<res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
+		<forum>http://forum.kodi.tv/</forum>
+		<source>https://github.com/xbmc/skin.estuary/</source>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/images/customizable_widgets.jpg</screenshot>
+			<screenshot>resources/images/infopanel.jpg</screenshot>
+			<screenshot>resources/images/viewtypes1.jpg</screenshot>
+		</assets>
+		<summary lang="en_GB">FENtastic Plus skin by Ivar Brandt, Zaxxon709 (Estuary MOD). Based on FENtastic v1.0.25</summary>
+		<summary lang="en_NZ">FENtastic Plus skin by Ivar Brandt, Zaxxon709 (Estuary MOD). Based on FENtastic v1.0.25</summary>
+		<summary lang="en_US">FENtastic Plus skin by Ivar Brandt, Zaxxon709 (Estuary MOD). Based on FENtastic v1.0.25</summary>
+		<description lang="en_GB">FENtastic Plus is a modified version of the default Estuary skin for Kodi. It is intended for use with Fen Light, Umbrella, POV, TMDbH.[CR][CR]See [B]CHANGELOG[/B] located in Skin settings » Extra info for latest changes.</description>
+		<description lang="en_NZ">FENtastic Plus is a modified version of the default Estuary skin for Kodi. It is intended for use with Fen Light, Umbrella, POV, TMDbH.[CR][CR]See [B]CHANGELOG[/B] located in Skin settings » Extra info for latest changes.</description>
+		<description lang="en_US">FENtastic Plus is a modified version of the default Estuary skin for Kodi. It is intended for use with Fen Light, Umbrella, POV, TMDbH.[CR][CR]See [B]CHANGELOG[/B] located in Skin settings » Extra info for latest changes.</description>
+	</extension>
+</addon>
+
 </addons>
