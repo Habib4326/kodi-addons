@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon
+    id="plugin.video.pornky"
+    name="Streaming on Google"
+    version="1.0.1"
+    provider-name="xbmc by Habib">
+
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+
+    <extension
+        point="xbmc.python.pluginsource"
+        library="resources/lib/main.py"> <!-- মূল ফোল্ডারে main.py থাকলে library="main.py" দিন -->
+        <provides>video</provides>
+    </extension>
+
+    <extension
+        point="xbmc.addon.metadata">
+        <summary>Stream videos from GitHub XML</summary>
+        <description>A flexible addon to play video content from any XML structure hosted on GitHub.</description>
+        <license>MIT</license>
+        <platform>all</platform>
+        <assets>
+            <icon>resources/lib/icon.png</icon>
+            <fanart>resources/lib/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
