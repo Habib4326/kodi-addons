@@ -125,7 +125,7 @@ provider-name="fr33p0rt">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.codexfinder" name="Codex Movie Finder" version="1.0.0" provider-name="Habib">
+<addon id="plugin.video.codexfinder" name="ICC Movies FTP" version="1.0.1" provider-name="Habib">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
