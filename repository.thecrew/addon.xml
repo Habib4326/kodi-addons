@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <addon id="repository.thecrew" name="[COLOR orchid]THE CREW REPO[/COLOR]" provider-name="The Crew" version="0.3.8">
 	<extension point="xbmc.addon.repository" name="The Crew" >
 			<dir minversion="18.9.9">

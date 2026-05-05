@@ -1,8 +1,0 @@
-<settings>
-    <category label="Cleaner Settings">
-
-        <setting id="auto_orphan_clean" type="bool" label="Remove orphan addon data" default="true"/>
-        <setting id="confirm_delete" type="bool" label="Ask before delete" default="true"/>
-
-    </category>
-</settings>

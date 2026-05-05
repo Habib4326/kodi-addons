@@ -10,34 +10,6 @@
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
 
-    <!-- 🔥 Script definition -->
-    <extension point="xbmc.python.script" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    
-    <!-- 📦 Metadata -->
-    <extension point="xbmc.addon.metadata">
-        <summary>Advanced Kodi Cleaner</summary>
-        <description>Cache, temp, orphan addon data cleaner</description>
-        <platform>all</platform>
-
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
-
-</addon>
-
-<addon id="plugin.program.smartcleaner"
-       name="Smart Cleaner"
-       version="1.0.3"
-       provider-name="Habib">
-
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-    </requires>
-
     <!--  Script definition -->
     <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>
@@ -57,7 +29,6 @@
 
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.Live" name="Live FTP Media" version="1.0.4" provider-name="Crated by Habib">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -78,7 +49,6 @@
     </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.adulthideout" name="AdultHideout" version="1.0.8" provider-name="Vashiel">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -122,7 +92,6 @@ https://github.com/Vashiel/repository.adulthideout
     </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.blueballs"                                                                                                                                    
 	   name="[COLOR blue]Blue Balls[/COLOR]"                                                 
 	   version="1.9"                                                                                                                                        
@@ -180,7 +149,6 @@ provider-name="fr33p0rt">
 </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.codexfinder"
        name="ICC Movies FTP"
        version="1.0.3"
@@ -243,7 +211,6 @@ provider-name="fr33p0rt">
     </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.elementum" name="Elementum" version="0.1.113" provider-name="elgatito">
     <requires>
         <import addon="xbmc.addon" version="16.0.0" />
@@ -309,9 +276,7 @@ provider-name="fr33p0rt">
 </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon
-    id="plugin.video.pornky"
+<addon id="plugin.video.pornky"
     name="pornky extra"
     version="1.0.1"
     provider-name="xbmc by Habib">
@@ -339,7 +304,6 @@ provider-name="fr33p0rt">
     </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.thecrew" version="2.0.6" name="[COLOR orchid]THE CREW[/COLOR]" provider-name="The Crew">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -375,8 +339,7 @@ provider-name="fr33p0rt">
     </extension>
 </addon>
 
-<addon
-  id="plugin.video.videodevil"
+<addon id="plugin.video.videodevil"
   version="1.8.28"
   name="VideoDevil"
   provider-name="xbmc-adult">
@@ -417,7 +380,6 @@ provider-name="fr33p0rt">
   </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.adulthideout" name="AdultHideout REPO" version="1.0.3" provider-name="Vashiel">
   <extension point="xbmc.addon.repository" name="AdultHideout Addon Repository">
     <dir maxversion="20.9.0">
@@ -477,7 +439,6 @@ provider-name="fr33p0rt">
     </extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.resolveurl" name="ResolveURL Repository" provider-name="gujal" version="1.0.0">
   <extension point="xbmc.addon.repository" name="ResolveURL Repository">
     <dir>
@@ -544,7 +505,6 @@ provider-name="fr33p0rt">
 	</extension>
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.umbrella" name="Umbrella Repository" version="2.2.6" provider-name="Umbrella">
     <extension point="xbmc.addon.repository" name="Umbrella Repository">
         <dir minversion="18.9.701" maxversion="19.5">
@@ -587,7 +547,7 @@ provider-name="fr33p0rt">
   </extension>
 </addon>
 
-<?xml version="1.0" ?><!-- note version attribute gets changed on the fly using ./scripts/update-version.py --><addon id="script.elementum.jackett" name="Elementum [COLOR FF0291F7]Jackett[/COLOR]" version="3.1.0" provider-name="fugkco">  
+<addon id="script.elementum.jackett" name="Elementum [COLOR FF0291F7]Jackett[/COLOR]" version="3.1.0" provider-name="fugkco">  
       <requires>    
             <import addon="xbmc.python" version="3.0.0"/>    
             <import addon="plugin.video.elementum"/>    
@@ -612,7 +572,6 @@ provider-name="fr33p0rt">
 </news>  </extension>  
 </addon>
 
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.fentastic.helper" name="FENtastic Plus Helper" version="100.6.25" provider-name="Tikipeter, Ivar Brandt, Zaxxon709">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
