@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.program.smartcleaner"
+       name="Smart Cleaner"
+       version="1.0.3"
+       provider-name="Habib">
+
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+
+    <!-- 🔥 Script definition -->
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    
+    <!-- 📦 Metadata -->
+    <extension point="xbmc.addon.metadata">
+        <summary>Advanced Kodi Cleaner</summary>
+        <description>Cache, temp, orphan addon data cleaner</description>
+        <platform>all</platform>
+
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+
+</addon>

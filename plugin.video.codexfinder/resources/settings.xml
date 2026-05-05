@@ -1,0 +1,45 @@
+<settings>
+
+    <!-- General -->
+    <category label="General">
+
+        <setting id="items_per_page"
+                 type="number"
+                 label="Movies per page"
+                 default="20" />
+
+        <setting id="show_years"
+                 type="bool"
+                 label="Show Movies by Year"
+                 default="true" />
+
+    </category>
+
+
+    <!-- Display -->
+    <category label="Display">
+
+        <setting id="default_icon"
+                 type="bool"
+                 label="Use addon default icon"
+                 default="true" />
+
+        <setting id="use_fanart"
+                 type="bool"
+                 label="Enable Fanart Background"
+                 default="true" />
+
+    </category>
+
+
+    <!-- Network -->
+    <category label="Network">
+
+        <setting id="xml_url"
+                 type="text"
+                 label="XML Source URL"
+                 default="https://raw.githubusercontent.com/Habib4326/ICC_Live_posterxml/main/movie_database.xml" />
+
+    </category>
+
+</settings>

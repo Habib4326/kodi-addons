@@ -3,121 +3,227 @@ import sys
 import urllib.parse
 import urllib.request
 import os
+import xbmc
 import xbmcgui
 import xbmcplugin
 import xbmcaddon
 import xml.etree.ElementTree as ET
 
-# অ্যাডঅন কনস্ট্যান্ট
 ADDON = xbmcaddon.Addon()
 HANDLE = int(sys.argv[1])
 BASE_URL = sys.argv[0]
+
+# আগে ভুল ছিল (xml_url use করছিলে path হিসেবে)
+# এটা ঠিক
 ADDON_PATH = ADDON.getAddonInfo('path')
 
-# GitHub XML URL
-XML_URL = "https://raw.githubusercontent.com/Habib4326/ICC_Live_posterxml/main/movie_database.xml"
+# Dynamic XML URL (settings থেকে)
+XML_URL = ADDON.getSetting('xml_url') or "https://raw.githubusercontent.com/Habib4326/ICC_Live_posterxml/main/movie_database.xml"
 
-# আইকন এবং ফ্যানআর্টের পাথ (আপনার অ্যাডঅন ফোল্ডারে এই ফাইলগুলো থাকতে হবে)
 ICON = os.path.join(ADDON_PATH, "icon.png")
 FANART_DEFAULT = os.path.join(ADDON_PATH, "fanart.jpg")
 
-# যদি ফোল্ডারের জন্য বিশেষ কোনো অনলাইন আইকন ব্যবহার করতে চান
-FOLDER_ICON = "https://raw.githubusercontent.com/google/material-design-icons/master/png/file/folder/materialicons/48dp/1x/baseline_folder_black_48dp.png"
+MOVIE_CACHE = None
 
+
+# ---------------- SAFE TEXT ----------------
+def safe(text):
+    try:
+        return text.encode('utf-8', 'ignore').decode('utf-8')
+    except:
+        return str(text)
+
+
+# ---------------- URL BUILDER ----------------
 def get_url(**kwargs):
     return BASE_URL + '?' + urllib.parse.urlencode(kwargs)
 
-def load_movies_by_year():
-    movie_dict = {}
+
+# ---------------- LOAD XML ----------------
+def load_movies():
+    global MOVIE_CACHE
+
+    if MOVIE_CACHE:
+        return MOVIE_CACHE
+
+    movie_list = []
     try:
         response = urllib.request.urlopen(XML_URL)
         xml_data = response.read()
         root = ET.fromstring(xml_data)
 
         for movie in root.findall("movie"):
-            year = movie.findtext("year", "Unknown")
-            movie_item = {
-                "title": movie.findtext("title", "Unknown"),
+            movie_list.append({
+                "title": safe(movie.findtext("title", "Unknown")),
+                "year": str(movie.findtext("year", "0")).strip(),
                 "link": movie.findtext("link", ""),
                 "poster": movie.findtext("poster", ""),
                 "rating": movie.findtext("rating", "N/A")
-            }
-            if year not in movie_dict:
-                movie_dict[year] = []
-            movie_dict[year].append(movie_item)
+            })
+
     except Exception as e:
-        xbmcgui.Dialog().ok("Error", "XML Load Error: " + str(e))
-    return movie_dict
+        xbmc.log("XML Load Error: " + str(e), xbmc.LOGERROR)
+        xbmcgui.Dialog().ok("Error", str(e))
 
+    MOVIE_CACHE = movie_list
+    return movie_list
+
+
+# ---------------- MAIN MENU ----------------
 def show_main_menu():
-    """মেনু আইটেম যেখানে আইকন এবং ফ্যানআর্ট সেট করা হয়েছে"""
-    
-    # সার্চ অপশন
-    search_item = xbmcgui.ListItem(label='🔍 Search Movie')
-    search_item.setArt({
-        'icon': ICON, 
-        'thumb': ICON, 
-        'fanart': FANART_DEFAULT
-    })
-    xbmcplugin.addDirectoryItem(HANDLE, get_url(action='search'), search_item, True)
 
-    movie_dict = load_movies_by_year()
-    sorted_years = sorted(movie_dict.keys(), reverse=True)
+    # Search
+    item1 = xbmcgui.ListItem("Search")
+    item1.setArt({'icon': ICON, 'thumb': ICON})
+    xbmcplugin.addDirectoryItem(HANDLE, get_url(action='search'), item1, True)
 
-    for year in sorted_years:
-        list_item = xbmcgui.ListItem(label=u'📁 Year: {}'.format(year))
-        
-        # এখানে ফোল্ডারের জন্য আইকন এবং ফ্যানআর্ট সেট করা হচ্ছে
-        # আপনি চাইলে প্রতিটি বছরের জন্য আলাদা ইমেজ দিতে পারেন, এখানে ডিফল্ট ব্যবহার করা হয়েছে
-        list_item.setArt({
-            'icon': FOLDER_ICON,
-            'thumb': FOLDER_ICON,
-            'poster': FOLDER_ICON,
-            'fanart': FANART_DEFAULT  # এখানে আপনার পছন্দমতো ব্যাকগ্রাউন্ড ইমেজ দিতে পারেন
-        })
-        
-        url = get_url(action='list_year_movies', year_val=year)
-        xbmcplugin.addDirectoryItem(HANDLE, url, list_item, True)
+    # Movies
+    item2 = xbmcgui.ListItem("Movies")
+    item2.setArt({'icon': ICON, 'thumb': ICON})
+    xbmcplugin.addDirectoryItem(HANDLE, get_url(action='years'), item2, True)
+
+    # All Movies
+    item3 = xbmcgui.ListItem("All Movies")
+    item3.setArt({'icon': ICON, 'thumb': ICON})
+    xbmcplugin.addDirectoryItem(HANDLE, get_url(action='all_movies'), item3, True)
 
     xbmcplugin.endOfDirectory(HANDLE)
 
-def list_year_movies(year):
-    movie_dict = load_movies_by_year()
-    movies = movie_dict.get(year, [])
 
+# ---------------- YEARS ----------------
+def show_years():
+    movies = load_movies()
+    years = sorted(set(str(m['year']) for m in movies), reverse=True)
+
+    for year in years:
+        item = xbmcgui.ListItem(safe(year))
+        item.setArt({'icon': ICON, 'thumb': ICON})
+
+        xbmcplugin.addDirectoryItem(
+            HANDLE,
+            get_url(action='movies_by_year', year=year),
+            item,
+            True
+        )
+
+    xbmcplugin.endOfDirectory(HANDLE)
+
+
+# ---------------- MOVIES BY YEAR ----------------
+def list_movies_by_year(year):
+    movies = load_movies()
+    filtered = [m for m in movies if str(m['year']) == str(year)]
+
+    if not filtered:
+        xbmcgui.Dialog().ok("Info", "No movies found for year " + str(year))
+        return
+
+    display_movies(filtered)
+    xbmcplugin.endOfDirectory(HANDLE)
+
+
+# ---------------- ALL MOVIES ----------------
+def list_all_movies(page=1):
+
+    # settings থেকে per page
+    try:
+        per_page = int(ADDON.getSetting('items_per_page'))
+    except:
+        per_page = 20
+
+    movies = load_movies()
+    movies = sorted(movies, key=lambda x: x['title'])
+
+    start = (page - 1) * per_page
+    end = start + per_page
+
+    display_movies(movies[start:end])
+
+    if end < len(movies):
+        next_item = xbmcgui.ListItem("Next Page >>")
+        next_item.setArt({'icon': ICON, 'thumb': ICON})
+
+        xbmcplugin.addDirectoryItem(
+            HANDLE,
+            get_url(action='all_movies', page=page + 1),
+            next_item,
+            True
+        )
+
+    xbmcplugin.endOfDirectory(HANDLE)
+
+
+# ---------------- DISPLAY MOVIES ----------------
+def display_movies(movies):
     for movie in movies:
-        list_item = xbmcgui.ListItem(label=movie['title'])
-        poster = movie.get('poster') if movie.get('poster') else ICON
-        
-        list_item.setArt({
+
+        poster = movie['poster'] or ICON
+
+        item = xbmcgui.ListItem(label=safe(movie['title']))
+
+        item.setArt({
             'thumb': poster,
             'poster': poster,
-            'fanart': poster # মুভি সিলেক্ট করলে ব্যাকগ্রাউন্ডে পোস্টার দেখাবে
+            'fanart': poster
         })
-        
-        list_item.setInfo('video', {
+
+        try:
+            year_int = int(movie['year'])
+        except:
+            year_int = 0
+
+        item.setInfo('video', {
             'title': movie['title'],
-            'year': int(year) if year.isdigit() else 0,
+            'year': year_int,
+            'rating': movie['rating'],
             'mediatype': 'movie'
         })
-        list_item.setProperty('IsPlayable', 'true')
-        
-        xbmcplugin.addDirectoryItem(HANDLE, movie['link'], list_item, False)
 
+        item.setProperty('IsPlayable', 'true')
+
+        xbmcplugin.addDirectoryItem(HANDLE, movie['link'], item, False)
+
+
+# ---------------- SEARCH ----------------
+def run_search():
+    query = xbmcgui.Dialog().input('Search Movie')
+
+    if not query:
+        return
+
+    movies = load_movies()
+    results = [m for m in movies if query.lower() in m['title'].lower()]
+
+    if not results:
+        xbmcgui.Dialog().ok("Search", "No results found")
+        return
+
+    display_movies(results)
     xbmcplugin.endOfDirectory(HANDLE)
 
-# ... (বাকি ফাংশনগুলো আগের মতোই থাকবে)
 
+# ---------------- ROUTER ----------------
 def router(paramstring):
     params = dict(urllib.parse.parse_qsl(paramstring))
-    if params:
-        if params.get('action') == 'search':
-            # run_search ফাংশনটি এখানে কল হবে
-            pass 
-        elif params.get('action') == 'list_year_movies':
-            list_year_movies(params.get('year_val'))
+    action = params.get('action')
+
+    if action == 'search':
+        run_search()
+
+    elif action == 'years':
+        show_years()
+
+    elif action == 'movies_by_year':
+        list_movies_by_year(params.get('year'))
+
+    elif action == 'all_movies':
+        page = int(params.get('page', 1))
+        list_all_movies(page)
+
     else:
         show_main_menu()
 
+
+# ---------------- START ----------------
 if __name__ == '__main__':
     router(sys.argv[2][1:])

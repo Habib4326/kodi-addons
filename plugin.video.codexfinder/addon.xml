@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.codexfinder" name="ICC Movies FTP" version="1.0.2" provider-name="Habib">
+<addon id="plugin.video.codexfinder"
+       name="ICC Movies FTP"
+       version="1.0.3"
+       provider-name="Habib">
+
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
+
     <extension point="xbmc.python.pluginsource" library="main.py">
         <provides>video</provides>
     </extension>
+
     <extension point="xbmc.addon.metadata">
-        <summary>Watch movies from local FTP servers</summary>
-        <description>Browse and play movies directly from your specified local IP servers.</description>
+        <summary lang="en">Browse and stream movies from FTP servers</summary>
+        <description lang="en">
+            Stream movies directly from local FTP/IP servers with TMDB posters, fanart, and metadata.
+        </description>
+
         <platform>all</platform>
+
+        <license>MIT</license>
+        <source>https://github.com/your-repo</source>
+
         <assets>
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>
         </assets>
+
+        <!-- Optional but recommended -->
+        <news>Initial stable release with TMDB integration</news>
     </extension>
+
 </addon>
