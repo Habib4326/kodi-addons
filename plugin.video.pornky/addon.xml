@@ -1,27 +1,41 @@
 <addon id="plugin.video.pornky"
-    name="pornky extra"
-    version="1.0.1"
-    provider-name="xbmc by Habib">
+    name="Pornky Extra"
+    version="1.0.4"
+    provider-name="Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
 
+    <!-- Plugin -->
     <extension
         point="xbmc.python.pluginsource"
-        library="resources/lib/main.py"> <!-- মূল ফোল্ডারে main.py থাকলে library="main.py" দিন -->
+        library="default.py">
+
         <provides>video</provides>
+
     </extension>
 
-    <extension
-        point="xbmc.addon.metadata">
-        <summary>Stream videos from GitHub XML</summary>
-        <description>A flexible addon to play video content from any XML structure hosted on GitHub.</description>
-        <license>MIT</license>
+    <!-- Metadata -->
+    <extension point="xbmc.addon.metadata">
+
+        <summary lang="en">
+            Stream videos from XML playlists
+        </summary>
+
+        <description lang="en">
+            A flexible Kodi addon that streams video content from XML files.
+        </description>
+
         <platform>all</platform>
+
+        <license>MIT</license>
+
         <assets>
-            <icon>resources/lib/icon.png</icon>
-            <fanart>resources/lib/fanart.jpg</fanart>
+            <icon>resources/media/icon.png</icon>
+            <fanart>resources/media/fanart.jpg</fanart>
         </assets>
+
     </extension>
+
 </addon>

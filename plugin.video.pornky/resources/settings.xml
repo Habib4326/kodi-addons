@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<settings>
+
+    <category label="Pornky Extra">
+
+        <setting
+            id="master_xml_url"
+            type="text"
+            label="Master XML URL"
+            default="https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/Main-Master.xml" />
+
+    </category>
+
+</settings>
