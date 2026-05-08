@@ -1,6 +1,6 @@
 <addon id="plugin.video.codexfinder"
        name="ICC Movies FTP"
-       version="1.0.3"
+       version="1.0.4"
        provider-name="Habib">
 
     <requires>

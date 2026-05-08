@@ -188,7 +188,7 @@ https://github.com/Vashiel/repository.adulthideout
   <email>fr33p0rt@protonmail.com</email>
   <news>Fix to follow website change again</news>
 </extension>
-</addon><addon id="plugin.video.codexfinder" name="ICC Movies FTP" version="1.0.3" provider-name="Habib">
+</addon><addon id="plugin.video.codexfinder" name="ICC Movies FTP" version="1.0.4" provider-name="Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
