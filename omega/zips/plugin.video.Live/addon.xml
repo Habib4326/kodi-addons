@@ -1,0 +1,19 @@
+<addon id="plugin.video.Live" name="Live FTP Media" version="1.0.4" provider-name="Crated by Habib">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+    
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Live FTP Media Addon</summary>
+        <description lang="en">Access your favorite movies and shows from FTP servers.</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
