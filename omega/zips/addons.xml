@@ -83,7 +83,8 @@
         </assets>
     </extension>
 
-</addon><addon id="plugin.video.Live" name="Live FTP Media" version="1.0.5" provider-name="Crated by Habib">
+</addon><addon id="plugin.video.Live" name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" version="1.0.6" provider-name="Crated by Habib">
+    
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
@@ -188,7 +189,7 @@ https://github.com/Vashiel/repository.adulthideout
   <email>fr33p0rt@protonmail.com</email>
   <news>Fix to follow website change again</news>
 </extension>
-</addon><addon id="plugin.video.codexfinder" name="ICC Movies FTP" version="1.0.6" provider-name="Habib">
+</addon><addon id="plugin.video.codexfinder" name="[B][COLOR deepskyblue]ICC[/COLOR] [COLOR white]Movies FTP[/COLOR][/B]" version="1.0.7" provider-name="Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0" />

@@ -14,8 +14,8 @@ def get_url(**kwargs):
 
 
 def show_main_menu():
-
-    item1 = xbmcgui.ListItem("Search")
+    # মেইন মেনুর জন্য Cyan কালার এবং বোল্ড ফরম্যাট ব্যবহার করা হয়েছে
+    item1 = xbmcgui.ListItem("[B][COLOR cyan]Search[/COLOR][/B]")
     item1.setArt({'icon': ICON})
 
     xbmcplugin.addDirectoryItem(
@@ -25,7 +25,7 @@ def show_main_menu():
         True
     )
 
-    item2 = xbmcgui.ListItem("Movies")
+    item2 = xbmcgui.ListItem("[B][COLOR cyan]Movies[/COLOR][/B]")
     item2.setArt({'icon': ICON})
 
     xbmcplugin.addDirectoryItem(
@@ -35,7 +35,7 @@ def show_main_menu():
         True
     )
 
-    item3 = xbmcgui.ListItem("All Movies")
+    item3 = xbmcgui.ListItem("[B][COLOR cyan]All Movies[/COLOR][/B]")
     item3.setArt({'icon': ICON})
 
     xbmcplugin.addDirectoryItem(
@@ -49,7 +49,6 @@ def show_main_menu():
 
 
 def show_years():
-
     movies = load_movies()
 
     years = sorted(
@@ -58,8 +57,9 @@ def show_years():
     )
 
     for year in years:
-
-        item = xbmcgui.ListItem(year)
+        # বছরের লিস্টের জন্য Lime কালার ব্যবহার করা হয়েছে
+        styled_year = f"[B][COLOR lime]{year}[/COLOR][/B]"
+        item = xbmcgui.ListItem(styled_year)
 
         item.setArt({
             'icon': ICON,
@@ -87,7 +87,6 @@ def show_years():
 
 
 def list_movies_by_year(year):
-
     movies = load_movies()
 
     filtered = [
@@ -96,26 +95,21 @@ def list_movies_by_year(year):
     ]
 
     display_movies(filtered)
-
     xbmcplugin.endOfDirectory(HANDLE)
 
 
 def list_all_movies(page=1):
-
     try:
         per_page = int(
             ADDON.getSetting(
                 'items_per_page'
             )
         )
-
     except:
         per_page = 20
 
     movies = load_movies()
-
     start = (page - 1) * per_page
-
     end = start + per_page
 
     display_movies(
@@ -123,9 +117,9 @@ def list_all_movies(page=1):
     )
 
     if end < len(movies):
-
+        # Next Page বাটনের জন্য Gold কালার ব্যবহার করা হয়েছে
         next_item = xbmcgui.ListItem(
-            "Next Page >>"
+            "[B][COLOR gold]Next Page >>[/COLOR][/B]"
         )
 
         xbmcplugin.addDirectoryItem(
@@ -142,7 +136,6 @@ def list_all_movies(page=1):
 
 
 def run_search():
-
     query = xbmcgui.Dialog().input(
         'Search Movie'
     )
@@ -153,20 +146,16 @@ def run_search():
     movies = load_movies()
 
     results = [
-
         m for m in movies
-
         if query.lower()
         in m['title'].lower()
     ]
 
     display_movies(results)
-
     xbmcplugin.endOfDirectory(HANDLE)
 
 
 def router(paramstring):
-
     params = dict(
         urllib.parse.parse_qsl(paramstring)
     )
@@ -174,27 +163,17 @@ def router(paramstring):
     action = params.get('action')
 
     if action == 'search':
-
         run_search()
-
     elif action == 'years':
-
         show_years()
-
     elif action == 'movies_by_year':
-
         list_movies_by_year(
             params.get('year')
         )
-
     elif action == 'all_movies':
-
         page = int(
             params.get('page', 1)
         )
-
         list_all_movies(page)
-
     else:
-
         show_main_menu()

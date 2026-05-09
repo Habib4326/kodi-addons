@@ -1,4 +1,8 @@
-<addon id="plugin.video.Live" name="Live FTP Media" version="1.0.5" provider-name="Crated by Habib">
+<addon id="plugin.video.Live" 
+       name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" 
+       version="1.0.6" 
+       provider-name="Crated by Habib">
+    
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib.request, urllib.parse, os, xbmcgui, xbmcplugin, sys, re, xbmcaddon
+import urllib.request, urllib.parse, os, xbmcgui, xbmcplugin, sys, re, xbmcaddon, random
 
 # প্লাগিন সেটিংস এবং পাথ
 addon = xbmcaddon.Addon()
@@ -9,6 +9,13 @@ default_fanart = os.path.join(addon_path, 'fanart.jpg')
 
 # অপ্রয়োজনীয় ফাইল ইগনোর করার লিস্ট
 EXCLUDE_LIST = ['h5ai', 'styles.css', 'favicon', 'css', 'js', 'fonts', 'index', 'cgi-bin', '..', 'parent directory', 'browsehappy.com']
+
+def get_styled_label(text):
+    """টেক্সট ক্লিন করে সবসময় Neon Green এবং বোল্ড সেট করবে"""
+    # 'lime' কালারটি কোডিতে একদম নিয়ন গ্রিন হিসেবে কাজ করে
+    color = 'lime' 
+    clean_text = re.sub(r'\[/?(?:COLOR|B).*?\]', '', text).strip()
+    return f"[COLOR {color}][B]{clean_text}[/B][/COLOR]"
 
 def get_year(name):
     match = re.search(r'\b(20\d{2}|19\d{2})\b', name)
@@ -53,6 +60,7 @@ def list_items(url, addon_handle, custom_icon=None):
     files = []
     current_dir_images = {} 
     
+    # মেইন রাউটার থেকে পাঠানো হলুদ ফোল্ডার পাথ
     active_icon = custom_icon if custom_icon else icon_path
 
     for l in all_links:
@@ -73,16 +81,17 @@ def list_items(url, addon_handle, custom_icon=None):
     # ফোল্ডার ডিসপ্লে
     for full_url in folders:
         clean_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
+        styled_name = get_styled_label("📁 " + clean_name)
+        
         if is_main_year_folder(clean_name):
             thumb = active_icon
-            fanart = default_fanart # মেইন ইয়ার ফোল্ডারে ডিফল্ট ফ্যানআর্ট
+            fanart = default_fanart
         else:
             thumb = get_smart_poster(full_url, clean_name) or active_icon
-            fanart = thumb # মুভি ফোল্ডারে পোস্টারটিই ফ্যানআর্ট হবে
+            fanart = thumb
 
-        li = xbmcgui.ListItem(label="[COLOR skyblue]📁 %s[/COLOR]" % clean_name)
-        # ফ্যানআর্ট আপডেট করা হয়েছে
-        li.setArt({'thumb': thumb, 'poster': thumb, 'icon': "DefaultFolder.png", 'fanart': fanart})
+        li = xbmcgui.ListItem(label=styled_name)
+        li.setArt({'thumb': thumb, 'poster': thumb, 'icon': active_icon, 'fanart': fanart})
         url_param = sys.argv[0] + '?action=list_items&url=' + urllib.parse.quote_plus(full_url)
         xbmcplugin.addDirectoryItem(addon_handle, url_param, li, True)
 
@@ -94,7 +103,9 @@ def list_items(url, addon_handle, custom_icon=None):
         clean_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
         file_no_ext = os.path.splitext(clean_name.lower())[0]
         
-        li = xbmcgui.ListItem(label="[COLOR springgreen]▶ %s[/COLOR]" % clean_name)
+        styled_file_name = get_styled_label("▶ " + clean_name)
+        
+        li = xbmcgui.ListItem(label=styled_file_name)
         li.setProperty('IsPlayable', 'true')
         li.setInfo('video', {'title': clean_name, 'mediatype': 'movie'})
         
@@ -103,7 +114,6 @@ def list_items(url, addon_handle, custom_icon=None):
             video_thumb = list(current_dir_images.values())[0]
         
         thumb = video_thumb or active_icon
-        # ফ্যানআর্ট আপডেট করা হয়েছে যাতে মুভির পোস্টার ব্যাকগ্রাউন্ডে দেখায়
         li.setArt({'thumb': thumb, 'poster': thumb, 'icon': thumb, 'fanart': thumb})
         xbmcplugin.addDirectoryItem(addon_handle, full_url, li, False)
             
