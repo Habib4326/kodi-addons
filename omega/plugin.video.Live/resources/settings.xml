@@ -8,4 +8,15 @@
         <setting id="enable_korean" type="bool" label="Enable Korean" default="true"/>
         <setting id="enable_icc" type="bool" label="Enable ICC-FTP" default="true"/>
     </category>
+
+    <category label="Add Custom Server">
+        <setting id="new_server_name" type="text" label="Menu Name (Image 1)" default=""/>
+        <setting id="folder_label" type="text" label="Folder Name (Image 2)" default=""/>
+        <setting id="new_server_url" type="text" label="Server URL" default=""/>
+        <setting id="add_now" type="action" label="[B][COLOR lime]ADD SERVER NOW[/COLOR][/B]" action="RunScript(special://home/addons/plugin.video.Live/resources/lib/server_maker.py)"/>
+    </category>
+    
+    <category label="Manage Servers">
+        <setting id="del_server" type="action" label="[B][COLOR red]DELETE CUSTOM SERVER[/COLOR][/B]" action="RunScript(special://home/addons/plugin.video.Live/resources/lib/server_maker.py, delete)"/>
+    </category>
 </settings>

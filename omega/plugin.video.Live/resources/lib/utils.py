@@ -26,14 +26,28 @@ def is_main_year_folder(name):
 
 def get_links(url):
     try:
+        # ইউআরএল-এ স্পেস থাকলে সেটি ঠিক করা
+        url = url.replace(' ', '%20')
         if not url.endswith('/'): url += '/'
+        
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=10) as response:
             html = response.read().decode('utf-8', errors='ignore')
+            
+            # h5ai এবং সাধারণ FTP ইনডেক্স উভয়ের জন্যই উন্নত রেজেক্স
             links = re.findall(r'href=["\']?([^"\' >]+)["\']?', html)
-            unique_links = list(set([urllib.parse.urljoin(url, link) for link in links 
-                                   if not any(x in link for x in ['../', './', '/?']) 
-                                   and 'C=' not in link and 'O=' not in link]))
+            
+            unique_links = []
+            for link in links:
+                # অপ্রয়োজনীয় লিংক ফিল্টার করা
+                if any(x in link for x in ['../', './', '/?', 'C=', 'O=', 'S=', 'N=']): continue
+                if link.startswith(('http', 'https')):
+                    full_url = link
+                else:
+                    full_url = urllib.parse.urljoin(url, link)
+                
+                if full_url not in unique_links:
+                    unique_links.append(full_url)
             return unique_links
     except:
         return []
@@ -120,12 +134,14 @@ def list_items(url, addon_handle, custom_icon=None):
     xbmcplugin.endOfDirectory(addon_handle)
 
 if __name__ == '__main__':
-    handle = int(sys.argv[1])
-    paramstring = sys.argv[2][1:]
-    params = urllib.parse.parse_qs(paramstring)
-    
-    action = params.get('action', [None])[0]
-    target_url = params.get('url', [None])[0]
+    # এটি নিশ্চিত করে যে যদি সরাসরি রান করা হয় তবে এরর আসবে না
+    if len(sys.argv) >= 2:
+        handle = int(sys.argv[1])
+        paramstring = sys.argv[2][1:]
+        params = urllib.parse.parse_qs(paramstring)
+        
+        action = params.get('action', [None])[0]
+        target_url = params.get('url', [None])[0]
 
-    if action == 'list_items':
-        list_items(target_url, handle, icon_path)
+        if action == 'list_items' and target_url:
+            list_items(target_url, handle, icon_path)
