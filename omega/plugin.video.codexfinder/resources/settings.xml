@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-
     <category label="General">
+        <setting id="xml_url" type="text" label="Main Movie XML URL" default="https://raw.githubusercontent.com/Habib4326/ICC_Live_posterxml/main/movie_database.xml" />
+        
+        <setting id="items_per_page" type="number" label="Movies Per Page" default="20" />
+        
+        <setting id="xml_list" type="text" default="[]" visible="false" />
 
-        <setting
-            id="xml_url"
-            type="text"
-            label="Movie XML URL"
-            default="https://raw.githubusercontent.com/Habib4326/ICC_Live_posterxml/main/movie_database.xml" />
-
-        <setting
-            id="items_per_page"
-            type="number"
-            label="Movies Per Page"
-            default="20" />
-
+        <hr />
+        <setting id="add_xml_action" type="action" label="Add New XML Directory" action="RunPlugin(plugin://plugin.video.codexfinder/?action=add_xml)" />
+        <setting id="delete_xml_action" type="action" label="Clear All Custom Directories" action="RunPlugin(plugin://plugin.video.codexfinder/?action=delete_xml)" />
     </category>
-
 </settings>

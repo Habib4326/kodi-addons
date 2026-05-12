@@ -126,7 +126,7 @@
   <email>fr33p0rt@protonmail.com</email>
   <news>Fix to follow website change again</news>
 </extension>
-</addon><addon id="plugin.video.codexfinder" name="[B][COLOR deepskyblue]ICC[/COLOR] [COLOR white]Movies FTP[/COLOR][/B]" version="1.0.7" provider-name="Habib">
+</addon><addon id="plugin.video.codexfinder" name="[B][COLOR deepskyblue]ICC[/COLOR] [COLOR white]Movies FTP[/COLOR][/B]" version="1.0.8" provider-name="Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
