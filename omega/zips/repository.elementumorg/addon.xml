@@ -11,13 +11,6 @@
             <checksum>https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/omega/zips/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/omega/zips/</datadir>
         </dir>
-        
-        <!-- ARM (Standard Repo path) -->
-        <dir>
-            <info>https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/repo/zips/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/repo/zips/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/Habib4326/Kodi-Pornky/main/repo/zips/</datadir>
-        </dir>
     </extension>
 
     <extension point="xbmc.python.script" library="default.py"/>
