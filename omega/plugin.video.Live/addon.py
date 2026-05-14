@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, xbmcplugin, xbmcgui, xbmcaddon, os, urllib.parse, random, re
+import sys, xbmcplugin, xbmcgui, xbmcaddon, os, urllib.parse, random, re, html
 from resources.lib import utils
 
 # অ্যাডন অবজেক্ট এবং হ্যান্ডেল
@@ -20,9 +20,11 @@ COLORS = ['red', 'green', 'deepskyblue', 'yellow', 'orange', 'cyan', 'lime', 'go
 
 def get_styled_label(text):
     """টেক্সট ক্লিন করে র্যান্ডম কালার এবং বোল্ড সেট করবে"""
+    # HTML entities (যেমন &amp;) ক্লিন করা
+    clean_text = html.unescape(text)
     color = random.choice(COLORS)
     # যদি আগে থেকে কোনো কালার ট্যাগ থাকে তা রিমুভ করে ক্লিন করবে
-    clean_text = re.sub(r'\[/?(?:COLOR|B).*?\]', '', text).strip()
+    clean_text = re.sub(r'\[/?(?:COLOR|B).*?\]', '', clean_text).strip()
     return f"[COLOR {color}][B]{clean_text}[/B][/COLOR]"
 
 def router(paramstring):
@@ -42,7 +44,9 @@ def router(paramstring):
                 for label, url in mod.SERVERS:
                     li = xbmcgui.ListItem(label=get_styled_label(label))
                     li.setArt({'icon': yellow_folder, 'thumb': yellow_folder, 'fanart': fanart})
-                    xbmcplugin.addDirectoryItem(handle, sys.argv[0] + '?action=list_items&url=' + urllib.parse.quote_plus(url), li, True)
+                    # URL সঠিকভাবে এনকোড করে পাস করা যাতে utils.py তা ঠিকভাবে পায়
+                    encoded_url = urllib.parse.quote_plus(url)
+                    xbmcplugin.addDirectoryItem(handle, sys.argv[0] + '?action=list_items&url=' + encoded_url, li, True)
         except Exception as e:
             print(f"Error loading server module: {e}")
             
@@ -52,7 +56,10 @@ def router(paramstring):
     elif action == 'list_items':
         url = params.get('url', [None])[0]
         if url:
-            utils.list_items(url, handle, yellow_folder)
+            # URL-টি utils.py তে পাঠানোর আগে একবার unquote করে নেওয়া নিরাপদ
+            # এটি আপনার লগে দেখা যাওয়া %20 বা &amp; জনিত সমস্যা সমাধানে সাহায্য করবে
+            final_url = urllib.parse.unquote(url)
+            utils.list_items(final_url, handle, yellow_folder)
         
     # ৩. মেইন মেনু (যা প্রথমেই ওপেন হবে)
     else:
@@ -64,7 +71,7 @@ def router(paramstring):
             for file in files:
                 if file.endswith(".py") and file != "__init__.py":
                     server_id = file.replace(".py", "")
-                    # ফাইলের নামকে সুন্দরভাবে দেখানোর জন্য (যেমন: dhakaflix -> DHAKAFLIX)
+                    # ফাইলের নামকে সুন্দরভাবে দেখানোর জন্য
                     display_name = server_id.upper().replace("_", " ")
                     
                     li = xbmcgui.ListItem(label=get_styled_label(display_name))

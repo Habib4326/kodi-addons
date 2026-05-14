@@ -1,6 +1,6 @@
 <addon id="plugin.video.Live" 
        name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" 
-       version="1.0.7" 
+       version="1.0.8" 
        provider-name="Crated by Habib">
     
     <requires>

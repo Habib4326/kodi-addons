@@ -83,7 +83,7 @@
         </assets>
     </extension>
 
-</addon><addon id="plugin.video.Live" name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" version="1.0.7" provider-name="Crated by Habib">
+</addon><addon id="plugin.video.Live" name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" version="1.0.8" provider-name="Crated by Habib">
     
     <requires>
         <import addon="xbmc.python" version="3.0.0" />

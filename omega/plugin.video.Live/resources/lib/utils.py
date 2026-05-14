@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib.request, urllib.parse, os, xbmcgui, xbmcplugin, sys, re, xbmcaddon, random
+import urllib.request, urllib.parse, os, xbmcgui, xbmcplugin, sys, re, xbmcaddon, html
 
 # প্লাগিন সেটিংস এবং পাথ
 addon = xbmcaddon.Addon()
@@ -11,10 +11,11 @@ default_fanart = os.path.join(addon_path, 'fanart.jpg')
 EXCLUDE_LIST = ['h5ai', 'styles.css', 'favicon', 'css', 'js', 'fonts', 'index', 'cgi-bin', '..', 'parent directory', 'browsehappy.com']
 
 def get_styled_label(text):
-    """টেক্সট ক্লিন করে সবসময় Neon Green এবং বোল্ড সেট করবে"""
-    # 'lime' কালারটি কোডিতে একদম নিয়ন গ্রিন হিসেবে কাজ করে
+    """টেক্সট ক্লিন করে নিয়ন গ্রিন কালার দেবে"""
     color = 'lime' 
-    clean_text = re.sub(r'\[/?(?:COLOR|B).*?\]', '', text).strip()
+    # HTML entities পরিষ্কার করা (যেমন &amp; কে & করা)
+    clean_text = html.unescape(text)
+    clean_text = re.sub(r'\[/?(?:COLOR|B).*?\]', '', clean_text).strip()
     return f"[COLOR {color}][B]{clean_text}[/B][/COLOR]"
 
 def get_year(name):
@@ -25,47 +26,48 @@ def is_main_year_folder(name):
     return bool(re.match(r'^\(\d{4}\)', name.strip()))
 
 def get_links(url):
+    """ডিসকভারি এফটিপির লিঙ্ক এক্সট্রাক্ট করার সবচেয়ে নিরাপদ পদ্ধতি"""
     try:
-        # ইউআরএল-এ স্পেস থাকলে সেটি ঠিক করা
+        # URL-এ স্পেস থাকলে তা এনকোড করা
         url = url.replace(' ', '%20')
         if not url.endswith('/'): url += '/'
         
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=10) as response:
-            html = response.read().decode('utf-8', errors='ignore')
-            
-            # h5ai এবং সাধারণ FTP ইনডেক্স উভয়ের জন্যই উন্নত রেজেক্স
-            links = re.findall(r'href=["\']?([^"\' >]+)["\']?', html)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+        req = urllib.request.Request(url, headers=headers)
+        
+        with urllib.request.urlopen(req, timeout=15) as response:
+            html_content = response.read().decode('utf-8', errors='ignore')
+            links = re.findall(r'href=[\'"]?([^\'" >]+)[\'"]?', html_content)
             
             unique_links = []
             for link in links:
-                # অপ্রয়োজনীয় লিংক ফিল্টার করা
-                if any(x in link for x in ['../', './', '/?', 'C=', 'O=', 'S=', 'N=']): continue
-                if link.startswith(('http', 'https')):
-                    full_url = link
-                else:
-                    full_url = urllib.parse.urljoin(url, link)
+                if any(x in link.lower() for x in ['../', './', '/?', 'c=', 'o=', 's=', 'n=']): continue
                 
-                if full_url not in unique_links:
+                full_url = urllib.parse.urljoin(url, link)
+                if full_url not in unique_links and full_url.rstrip('/') != url.rstrip('/'):
                     unique_links.append(full_url)
             return unique_links
     except:
         return []
 
 def get_smart_poster(folder_url, folder_name):
-    clean_name = os.path.basename(folder_name.rstrip('/'))
-    possible_posters = ["a_AL_.jpg", "poster.jpg", "folder.jpg", clean_name + ".jpg", "cover.jpg"]
-    
-    links = get_links(folder_url)
-    img_map = {os.path.basename(urllib.parse.unquote(l)): l for l in links if l.lower().endswith(('.jpg', '.jpeg', '.png', '.webp'))}
+    """মুভি ফোল্ডারের ভেতর থেকে পোস্টার ইমেজ খুঁজে বের করা"""
+    try:
+        links = get_links(folder_url)
+        if not links: return None
+        
+        clean_name = os.path.basename(folder_name.rstrip('/'))
+        possible_posters = ["a_AL_.jpg", "poster.jpg", "folder.jpg", clean_name + ".jpg", "cover.jpg"]
+        
+        img_map = {os.path.basename(urllib.parse.unquote(l)): l for l in links if l.lower().endswith(('.jpg', '.jpeg', '.png'))}
 
-    for p_name in possible_posters:
-        if p_name in img_map:
-            return img_map[p_name]
-    
-    for l in links:
-        if l.lower().endswith(('.jpg', '.jpeg', '.png', '.tbn')):
-            return l
+        for p_name in possible_posters:
+            if p_name in img_map: return img_map[p_name]
+        
+        for l in links:
+            if l.lower().endswith(('.jpg', '.jpeg', '.png')) and 'fanart' not in l.lower():
+                return l
+    except: pass
     return None
 
 def list_items(url, addon_handle, custom_icon=None):
@@ -74,49 +76,52 @@ def list_items(url, addon_handle, custom_icon=None):
     files = []
     current_dir_images = {} 
     
-    # মেইন রাউটার থেকে পাঠানো হলুদ ফোল্ডার পাথ
     active_icon = custom_icon if custom_icon else icon_path
 
     for l in all_links:
-        name = os.path.basename(urllib.parse.unquote(l).rstrip('/'))
-        if any(item in name.lower() for item in EXCLUDE_LIST): continue
+        raw_name = os.path.basename(urllib.parse.unquote(l).rstrip('/'))
+        name = html.unescape(raw_name)
         
-        if l.lower().endswith(('.jpg', '.jpeg', '.png', '.tbn')):
+        if not name or any(item in name.lower() for item in EXCLUDE_LIST): continue
+        
+        if l.lower().endswith(('.jpg', '.jpeg', '.png')):
             name_no_ext = os.path.splitext(name.lower())[0]
             current_dir_images[name_no_ext] = l
             continue 
 
         if l.endswith('/'): folders.append(l)
-        else: files.append(l)
+        else:
+            if l.lower().endswith(('.mp4', '.mkv', '.avi', '.ts', '.webm')):
+                files.append(l)
 
+    # সর্টিং
     folders.sort(key=lambda x: get_year(os.path.basename(urllib.parse.unquote(x).rstrip('/'))), reverse=True)
     files.sort(key=lambda x: get_year(os.path.basename(urllib.parse.unquote(x).rstrip('/'))), reverse=True)
 
-    # ফোল্ডার ডিসপ্লে
     for full_url in folders:
-        clean_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
+        raw_folder_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
+        clean_name = html.unescape(raw_folder_name)
         styled_name = get_styled_label("📁 " + clean_name)
         
         if is_main_year_folder(clean_name):
             thumb = active_icon
             fanart = default_fanart
         else:
-            thumb = get_smart_poster(full_url, clean_name) or active_icon
-            fanart = thumb
+            found_poster = get_smart_poster(full_url, clean_name)
+            thumb = found_poster if found_poster else active_icon
+            fanart = found_poster if found_poster else default_fanart
 
         li = xbmcgui.ListItem(label=styled_name)
         li.setArt({'thumb': thumb, 'poster': thumb, 'icon': active_icon, 'fanart': fanart})
+        
         url_param = sys.argv[0] + '?action=list_items&url=' + urllib.parse.quote_plus(full_url)
         xbmcplugin.addDirectoryItem(addon_handle, url_param, li, True)
 
-    # ফাইল ডিসপ্লে
+    # ভিডিও ফাইল ডিসপ্লে
     for full_url in files:
-        if not full_url.lower().endswith(('.mp4', '.mkv', '.avi', '.ts', '.webm')):
-            continue
-
-        clean_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
+        raw_file_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
+        clean_name = html.unescape(raw_file_name)
         file_no_ext = os.path.splitext(clean_name.lower())[0]
-        
         styled_file_name = get_styled_label("▶ " + clean_name)
         
         li = xbmcgui.ListItem(label=styled_file_name)
@@ -127,21 +132,13 @@ def list_items(url, addon_handle, custom_icon=None):
         if not video_thumb and current_dir_images:
             video_thumb = list(current_dir_images.values())[0]
         
-        thumb = video_thumb or active_icon
+        thumb = video_thumb if video_thumb else active_icon
         li.setArt({'thumb': thumb, 'poster': thumb, 'icon': thumb, 'fanart': thumb})
-        xbmcplugin.addDirectoryItem(addon_handle, full_url, li, False)
+        
+        # লগ অনুযায়ী সমস্যা সমাধান: লিঙ্ক থেকে HTML entities (&amp;) পরিষ্কার করা
+        # এবং স্পেসকে %20 দিয়ে রিপ্লেস করা
+        final_play_url = html.unescape(full_url).replace(' ', '%20')
+        
+        xbmcplugin.addDirectoryItem(addon_handle, final_play_url, li, False)
             
     xbmcplugin.endOfDirectory(addon_handle)
-
-if __name__ == '__main__':
-    # এটি নিশ্চিত করে যে যদি সরাসরি রান করা হয় তবে এরর আসবে না
-    if len(sys.argv) >= 2:
-        handle = int(sys.argv[1])
-        paramstring = sys.argv[2][1:]
-        params = urllib.parse.parse_qs(paramstring)
-        
-        action = params.get('action', [None])[0]
-        target_url = params.get('url', [None])[0]
-
-        if action == 'list_items' and target_url:
-            list_items(target_url, handle, icon_path)
