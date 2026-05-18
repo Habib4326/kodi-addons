@@ -83,7 +83,7 @@
         </assets>
     </extension>
 
-</addon><addon id="plugin.video.Live" name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" version="1.0.8" provider-name="Crated by Habib">
+</addon><addon id="plugin.video.Live" name="[B][COLOR red]Live[/COLOR] [COLOR gold]FTP[/COLOR] [COLOR lime]Media[/COLOR][/B]" version="1.0.9" provider-name="Crated by Habib">
     
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -126,7 +126,7 @@
   <email>fr33p0rt@protonmail.com</email>
   <news>Fix to follow website change again</news>
 </extension>
-</addon><addon id="plugin.video.codexfinder" name="[B][COLOR deepskyblue]ICC[/COLOR] [COLOR white]Movies FTP[/COLOR][/B]" version="1.0.9" provider-name="Habib">
+</addon><addon id="plugin.video.codexfinder" name="[B][COLOR deepskyblue]ICC[/COLOR] [COLOR white]Movies FTP[/COLOR][/B]" version="1.0.10" provider-name="Habib">
 
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -139,11 +139,11 @@
     <extension point="xbmc.addon.metadata">
 
         <summary lang="en">
-            Browse and stream movies from FTP servers
+            Browse and stream movies from ICC Movies Database
         </summary>
 
         <description lang="en">
-            Stream movies directly from local FTP/IP servers
+            Stream movies directly from organized online databases and server links.
         </description>
 
         <platform>all</platform>
@@ -156,7 +156,6 @@
         </assets>
 
     </extension>
-
 </addon><addon id="plugin.video.cumination" name="Cumination" provider-name="Cumination" version="1.1.179">
     <requires>
         <import addon="script.module.six" />

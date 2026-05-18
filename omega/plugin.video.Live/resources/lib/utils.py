@@ -98,6 +98,7 @@ def list_items(url, addon_handle, custom_icon=None):
     folders.sort(key=lambda x: get_year(os.path.basename(urllib.parse.unquote(x).rstrip('/'))), reverse=True)
     files.sort(key=lambda x: get_year(os.path.basename(urllib.parse.unquote(x).rstrip('/'))), reverse=True)
 
+    # ফোল্ডার ডিসপ্লে
     for full_url in folders:
         raw_folder_name = os.path.basename(urllib.parse.unquote(full_url).rstrip('/'))
         clean_name = html.unescape(raw_folder_name)
@@ -125,8 +126,11 @@ def list_items(url, addon_handle, custom_icon=None):
         styled_file_name = get_styled_label("▶ " + clean_name)
         
         li = xbmcgui.ListItem(label=styled_file_name)
-        li.setProperty('IsPlayable', 'true')
-        li.setInfo('video', {'title': clean_name, 'mediatype': 'movie'})
+        
+        # Kodi লেটেস্ট ভার্সনের জন্য সেট ইনফো আপডেট (ভিডিও ট্যাগ পদ্ধতি)
+        video_info = li.getVideoInfoTag()
+        video_info.setTitle(clean_name)
+        video_info.setMediaType('movie')
         
         video_thumb = current_dir_images.get(file_no_ext)
         if not video_thumb and current_dir_images:
@@ -135,10 +139,10 @@ def list_items(url, addon_handle, custom_icon=None):
         thumb = video_thumb if video_thumb else active_icon
         li.setArt({'thumb': thumb, 'poster': thumb, 'icon': thumb, 'fanart': thumb})
         
-        # লগ অনুযায়ী সমস্যা সমাধান: লিঙ্ক থেকে HTML entities (&amp;) পরিষ্কার করা
-        # এবং স্পেসকে %20 দিয়ে রিপ্লেস করা
+        # লিঙ্ক থেকে HTML entities পরিষ্কার করা এবং স্পেস হ্যান্ডেল করা
         final_play_url = html.unescape(full_url).replace(' ', '%20')
         
+        # ডিরেক্ট প্লেব্যাক আইটেম হিসেবে সেট করা (Kodi স্ট্যান্ডার্ড পদ্ধতি)
         xbmcplugin.addDirectoryItem(addon_handle, final_play_url, li, False)
             
     xbmcplugin.endOfDirectory(addon_handle)
