@@ -281,7 +281,7 @@ def list_movies(url):
                     + poster
                 )
 
-            # এখানে টাইটেল প্যারামিটারটি যুক্ত করা হলো যাতে প্লে করার সময় টাইটেল পাওয়া যায়
+            # এখানে টাইটেল প্যারামিটারটি যুক্ত করা হলো যাতে প্লে করার সময় টাইটেল পাওয়া যায়
             play_url = f"{href}&title={requests.utils.quote(title)}"
 
             utils.add_directory_item(
@@ -304,20 +304,32 @@ def list_movies(url):
 
 
 # ============================================
-# TERMUX API STREAM RESOLVER
+# TERMUX API STREAM RESOLVER (DYNAMIC SETTINGS)
 # ============================================
 
 def resolve_stream_from_api(page_url):
 
     try:
+        # সেটিংস থেকে ইউজার আইপি এবং পোর্ট নিয়ে ট্রিম (.strip) করা হচ্ছে
+        api_ip = ADDON.getSetting('api_ip').strip()
+        api_port = ADDON.getSetting('api_port').strip()
+        
+        # যদি ইউজার সেটিংসের বক্স সম্পূর্ণ ফাঁকা রাখে, তবে ডিফল্ট ভ্যালু সেট হবে
+        if not api_ip:
+            api_ip = "127.0.0.1"
+        if not api_port:
+            api_port = "8080"
+        
+        # ডাইনামিক API URL তৈরি
+        api_url = f"http://{api_ip}:{api_port}/resolve"
 
         xbmc.log(
-            "[HabibMedia] Connecting to Termux API...",
+            f"[HabibMedia] Connecting to Termux API ({api_url})...",
             xbmc.LOGINFO
         )
 
         response = requests.get(
-            "http://127.0.0.1:8080/resolve",
+            api_url,
             params={
                 "url": page_url
             },
@@ -348,6 +360,17 @@ def resolve_stream_from_api(page_url):
 
         return None
 
+    except requests.exceptions.ConnectionError:
+        # ভুল আইপি/পোর্টের কারণে বা এপিআই অফ থাকলে কানেকশন ফেইল্ড ডায়ালগ প্রম্পট
+        xbmc.log(f"[HabibMedia] Connection Error: Cannot connect to {api_url}", xbmc.LOGERROR)
+        xbmcgui.Dialog().ok(
+            "API Connection Failed",
+            f"Could not connect to Termux API.\n\n"
+            f"Target URL: {api_url}\n"
+            f"Please verify your IP & Port configurations in Addon Settings."
+        )
+        return None
+
     except Exception as e:
 
         xbmc.log(
@@ -364,7 +387,7 @@ def resolve_stream_from_api(page_url):
 
 def download_file(stream_url, download_path, video_title):
     try:
-        # ফাইলের নাম থেকে অবৈধ উইন্ডোজ/অ্যান্ড্রয়েড ক্যারেক্টার বাদ দেওয়া (Clean Filename)
+        # ফাইলের নাম থেকে অবৈধ উইন্ডোজ/অ্যান্ড্রয়েড ক্যারেক্টার বাদ দেওয়া (Clean Filename)
         clean_title = "".join([c for c in video_title if c.isalnum() or c in (' ', '_', '-', '.')]).strip()
         clean_title = clean_title.replace(' ', '_') # স্পেসের বদলে আন্ডারস্কোর ব্যবহার
         
@@ -394,7 +417,7 @@ def download_file(stream_url, download_path, video_title):
                     if chunk:
                         f.write(chunk)
             
-            # ডাউনলোড সফল হওয়ার মেসেজ
+            # ডাউনলোড সফল হওয়ার মেসেজ
             xbmcgui.Dialog().notification(
                 "Download Complete",
                 f"Saved: {filename}",
@@ -464,7 +487,7 @@ def play_video(combined_url):
                         4000
                     )
                     
-                    # কোডি প্লেব্যাক ইঞ্জিনকে ডামি রেসপন্স দিয়ে শান্ত করা
+                    # কোডি প্লেব্যাক ইঞ্জিনকে ডামি রেসপন্স দিয়ে শান্ত করা
                     dummy_item = xbmcgui.ListItem(path=stream_url)
                     dummy_item.setProperty("IsPlayable", "false")
                     xbmcplugin.setResolvedUrl(HANDLE, True, listitem=dummy_item)
@@ -475,7 +498,7 @@ def play_video(combined_url):
                     return
 
             # ----------------------------------------------------
-            # ভিডিও প্লে করার নিয়মিত অংশ
+            # ভিডিও প্লে করার নিয়মিত অংশ
             # ----------------------------------------------------
             headers = (
                 "User-Agent=Mozilla/5.0%20"
