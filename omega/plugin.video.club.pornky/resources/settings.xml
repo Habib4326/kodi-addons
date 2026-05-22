@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <!-- ডিরেক্টরি বা ফোল্ডার সেটিং ক্যাটাগরি -->
+    <category label="General">
+        <!-- ডাউনলোড অপশন চালু বা বন্ধ করার সুইচ -->
+        <setting id="enable_download" type="bool" label="Enable Video Download" default="false"/>
+        
+        <!-- ডাউনলোড করা ভিডিও কোথায় সেভ হবে সেই ফোল্ডার পাথ সিলেক্ট করার অপশন -->
+        <setting id="download_path" type="folder" label="Download Folder Path" default="" enable="eq(-1,true)"/>
+    </category>
+</settings>
